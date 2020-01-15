@@ -1,7 +1,6 @@
 package com.picsum.filelist.view
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.picsum.R
+import com.picsum.api.getPicsumImageUrlWithDimens
 import com.picsum.filelist.FileListContract
 import com.picsum.filelist.di.DaggerFileListComponent
 import com.picsum.filelist.di.FileListModule
@@ -85,7 +85,10 @@ class FileListFragment : Fragment(), FileListContract.View {
 
     private fun onItemClick(fileItem: FileItem) {
         val intent = Intent(activity!!, BigViewerActivity::class.java)
-        intent.putExtra(BigViewerActivity.ARGUMENT_IMAGE_URL, "https://picsum.photos/id/${fileItem.id}/500/500")
+        intent.putExtra(
+            BigViewerActivity.ARGUMENT_IMAGE_URL,
+            getPicsumImageUrlWithDimens(fileItem.id.toString(), 500, 500)
+        )
         startActivity(intent)
     }
 }
