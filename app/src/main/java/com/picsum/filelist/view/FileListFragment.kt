@@ -1,5 +1,7 @@
 package com.picsum.filelist.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,7 +52,7 @@ class FileListFragment : Fragment(), FileListContract.View {
                 context, (mRecyclerViewList.layoutManager as LinearLayoutManager).orientation
             )
         )
-        mRecyclerViewList.adapter = FileListItemAdapter(arrayListOf())
+        mRecyclerViewList.adapter = FileListItemAdapter(arrayListOf()) { onItemClick(it) }
     }
 
     override fun refreshItems(items: List<FileItem>) {
@@ -79,5 +81,11 @@ class FileListFragment : Fragment(), FileListContract.View {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDetach()
+    }
+
+    private fun onItemClick(fileItem: FileItem) {
+        val intent = Intent(activity!!, BigViewerActivity::class.java)
+        intent.putExtra(BigViewerActivity.ARGUMENT_IMAGE_URL, "https://picsum.photos/id/${fileItem.id}/500/500")
+        startActivity(intent)
     }
 }

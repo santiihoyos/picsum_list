@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@android:color/black">
+
+    <com.github.piasy.biv.view.BigImageView
+        android:id="@+id/mBigImageViewer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:failureImage="@drawable/ic_image_gray_50dp"
+        app:failureImageInitScaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:optimizeDisplay="true"/>
+
+    <ImageButton
+        android:id="@+id/mImageButtonBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/mBigImageViewer"
+        app:layout_constraintTop_toTopOf="@+id/mBigImageViewer"
+        app:srcCompat="@drawable/ic_arrow_white_24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

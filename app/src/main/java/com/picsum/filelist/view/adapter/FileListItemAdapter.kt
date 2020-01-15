@@ -8,17 +8,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.picsum.R
 import com.picsum.api.getPicsumImageUrlWithDimens
-import com.picsum.filelist.viewmodel.FileItem
 import com.picsum.base.setImageUrl
+import com.picsum.filelist.viewmodel.FileItem
 import kotlinx.android.synthetic.main.recycler_fileitem.view.*
 
-class FileListItemAdapter(var items: List<FileItem>) :
-    RecyclerView.Adapter<FileListItemViewHolder>() {
+
+class FileListItemAdapter(
+    var items: List<FileItem>,
+    var onItemClick: ((fileItem: FileItem) -> Unit)?) : RecyclerView.Adapter<FileListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileListItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_fileitem, parent, false)
-        return FileListItemViewHolder(view)
+        return FileListItemViewHolder(view, onItemClick)
     }
 
     override fun onBindViewHolder(holder: FileListItemViewHolder, position: Int) {
@@ -28,7 +30,8 @@ class FileListItemAdapter(var items: List<FileItem>) :
     override fun getItemCount() = items.size
 }
 
-class FileListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class FileListItemViewHolder(val view: View, val listenerClick: ((fileItem: FileItem) -> Unit)?) :
+    RecyclerView.ViewHolder(view) {
 
     private val textViewName: TextView = view.mTextViewFileNameFileItem
     private val imageViewPhoto: ImageView = view.mImageViewImage
@@ -39,6 +42,6 @@ class FileListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         textViewAuthor.text = fileItem.author
         //setImageUrl is a extension on ImageView
         imageViewPhoto.setImageUrl(getPicsumImageUrlWithDimens("${fileItem.id}", 100, 100))
+        view.setOnClickListener { listenerClick?.invoke(fileItem) }
     }
-
 }
