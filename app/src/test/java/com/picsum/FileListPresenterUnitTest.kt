@@ -55,7 +55,7 @@ class FileListPresenterUnitTest {
 
     /**
      * Test get list items use case with error
-     * -test on erro with any results ORDERED ok
+     * -test on error callback
      * -test invocation of loading events for view
      * -test view was notified with same error message
      */
@@ -64,7 +64,7 @@ class FileListPresenterUnitTest {
     fun getItems_onError() {
         val view = mock<FileListContract.View>()
 
-        //test ok response with sorted list by author
+        //test with bad response with sorted list by author
         val okRepo = mock<FileListContract.Repository> {
             on {
                 getItems(any(), any())
