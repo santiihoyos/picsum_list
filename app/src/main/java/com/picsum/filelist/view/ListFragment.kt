@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.picsum.R
 import com.picsum.filelist.FileListContract
+import com.picsum.filelist.domain.FileListRepository
 import com.picsum.filelist.presenter.FileListPresenter
 import com.picsum.filelist.view.adapter.FileListItemAdapter
 import com.picsum.filelist.viewmodel.FileItem
@@ -29,7 +30,7 @@ class ListFragment : Fragment(), FileListContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         setupFileList()
-        presenter = FileListPresenter(this)
+        presenter = FileListPresenter(this, FileListRepository())
         presenter.getItems()
     }
 
