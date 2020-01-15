@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.picsum.R
 import com.picsum.api.getPicsumImageUrlWithDimens
 import com.picsum.filelist.viewmodel.FileItem
-import com.picsum.setImageUrl
+import com.picsum.base.setImageUrl
 import kotlinx.android.synthetic.main.recycler_fileitem.view.*
 
 class FileListItemAdapter(var items: List<FileItem>) :

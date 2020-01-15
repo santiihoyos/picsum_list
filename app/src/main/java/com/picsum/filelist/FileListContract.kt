@@ -13,6 +13,7 @@ interface FileListContract {
 
     interface Presenter {
         fun getItems()
+        fun onDetach()
     }
 
     interface Repository {

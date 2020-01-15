@@ -61,18 +61,23 @@ class FileListFragment : Fragment(), FileListContract.View {
     }
 
     override fun showLoading(loading: Boolean) {
-        mTextViewError.visibility = View.GONE
+        mTextViewError?.visibility = View.GONE
         if (loading) {
-            mRecyclerViewList.visibility = View.GONE
-            mProgressBar.visibility = View.VISIBLE
+            mRecyclerViewList?.visibility = View.GONE
+            mProgressBar?.visibility = View.VISIBLE
         } else {
-            mRecyclerViewList.visibility = View.VISIBLE
-            mProgressBar.visibility = View.GONE
+            mRecyclerViewList?.visibility = View.VISIBLE
+            mProgressBar?.visibility = View.GONE
         }
     }
 
     override fun onError(textToShow: String) {
-        mProgressBar.visibility = View.GONE
-        mTextViewError.visibility = View.VISIBLE
+        mProgressBar?.visibility = View.GONE
+        mTextViewError?.visibility = View.VISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDetach()
     }
 }
