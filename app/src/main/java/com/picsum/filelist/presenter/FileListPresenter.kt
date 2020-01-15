@@ -2,10 +2,11 @@ package com.picsum.filelist.presenter
 
 import com.picsum.filelist.FileListContract
 import com.picsum.filelist.domain.FileListRepository
+import javax.inject.Inject
 
-class FileListPresenter(
-    val view: FileListContract.View,
-    val repo: FileListContract.Repository
+class FileListPresenter @Inject constructor(
+    private val view: FileListContract.View,
+    private val repo: FileListContract.Repository
 ) : FileListContract.Presenter {
 
     override fun getItems() {

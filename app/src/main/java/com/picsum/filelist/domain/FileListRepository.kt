@@ -7,8 +7,9 @@ import com.picsum.filelist.viewmodel.FileItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class FileListRepository : FileListContract.Repository {
+class FileListRepository @Inject constructor() : FileListContract.Repository {
 
     override fun getItems(
         onResult: (items: List<FileItem>) -> Unit,

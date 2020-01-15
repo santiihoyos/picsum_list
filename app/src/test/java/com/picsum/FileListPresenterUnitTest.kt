@@ -45,7 +45,7 @@ class FileListPresenterUnitTest {
         verify(view, atLeast(1)).refreshItems(
             arrayListOf(
                 fakeResultsNotSorted[2],
-                fakeResultsNotSorted[1],   //ordered manually for avoid user sortBy function used in presenter...
+                fakeResultsNotSorted[1],   //ordered manually for avoid use sortBy function used in presenter...
                 fakeResultsNotSorted[3],
                 fakeResultsNotSorted[0]
             )
@@ -53,6 +53,12 @@ class FileListPresenterUnitTest {
         verify(view, atLeast(1)).showLoading(false)
     }
 
+    /**
+     * Test get list items use case
+     * -test on erro with any results ORDERED ok
+     * -test invocation of loading events for view
+     * -test view was notified with same error message
+     */
     @Test
     @Suppress("UNCHECKED_CAST")
     fun getItems_onError() {

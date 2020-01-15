@@ -9,16 +9,26 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.picsum.R
 import com.picsum.filelist.FileListContract
-import com.picsum.filelist.domain.FileListRepository
-import com.picsum.filelist.presenter.FileListPresenter
+import com.picsum.filelist.di.DaggerFileListComponent
+import com.picsum.filelist.di.FileListModule
 import com.picsum.filelist.view.adapter.FileListItemAdapter
 import com.picsum.filelist.viewmodel.FileItem
 import kotlinx.android.synthetic.main.fragment_list.*
+import javax.inject.Inject
 
 
-class ListFragment : Fragment(), FileListContract.View {
+class FileListFragment : Fragment(), FileListContract.View {
 
-    private lateinit var presenter: FileListContract.Presenter
+    @Inject
+    lateinit var presenter: FileListContract.Presenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        DaggerFileListComponent.builder()
+            .fileListModule(FileListModule(this))
+            .build()
+            .inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +38,7 @@ class ListFragment : Fragment(), FileListContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupFileList()
-        presenter = FileListPresenter(this, FileListRepository())
         presenter.getItems()
     }
 

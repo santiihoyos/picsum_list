@@ -2,7 +2,7 @@ package com.picsum
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.picsum.filelist.view.ListFragment
+import com.picsum.filelist.view.FileListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFileList() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.mainActivity_fragment_container, ListFragment())
+            .replace(R.id.mainActivity_fragment_container, FileListFragment())
             .commit()
     }
 }
