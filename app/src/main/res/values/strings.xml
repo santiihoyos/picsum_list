@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Picsum</string>
+    <string name="error_on_load">Can\'t be load images :S</string>
+</resources>
