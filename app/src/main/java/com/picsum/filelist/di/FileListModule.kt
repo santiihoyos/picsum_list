@@ -16,9 +16,7 @@ class FileListModule(val view: FileListContract.View) {
     fun provideFileListContractPresenter(
         view: FileListContract.View,
         repo: FileListContract.Repository
-    ): FileListContract.Presenter {
-        return FileListPresenter(view, repo)
-    }
+    ): FileListContract.Presenter = FileListPresenter(view, repo)
 
     @Provides
     fun provideFileListContractRepo(): FileListContract.Repository = FileListRepository()

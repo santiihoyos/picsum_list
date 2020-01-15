@@ -54,7 +54,7 @@ class FileListPresenterUnitTest {
     }
 
     /**
-     * Test get list items use case
+     * Test get list items use case with error
      * -test on erro with any results ORDERED ok
      * -test invocation of loading events for view
      * -test view was notified with same error message
