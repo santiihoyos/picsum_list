@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.recycler_fileitem.view.*
 
 class FileListItemAdapter(
     var items: List<FileItem>,
-    var onItemClick: ((fileItem: FileItem) -> Unit)?) : RecyclerView.Adapter<FileListItemViewHolder>() {
+    var onItemClick: ((fileItem: FileItem) -> Unit)?
+) : RecyclerView.Adapter<FileListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileListItemViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -30,7 +31,10 @@ class FileListItemAdapter(
     override fun getItemCount() = items.size
 }
 
-class FileListItemViewHolder(val view: View, val listenerClick: ((fileItem: FileItem) -> Unit)?) :
+class FileListItemViewHolder(
+    val view: View,
+    private val listenerClick: ((fileItem: FileItem) -> Unit)?
+) :
     RecyclerView.ViewHolder(view) {
 
     private val textViewName: TextView = view.mTextViewFileNameFileItem

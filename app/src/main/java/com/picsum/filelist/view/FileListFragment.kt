@@ -44,15 +44,12 @@ class FileListFragment : Fragment(), FileListContract.View {
         presenter.getItems()
     }
 
-    private fun setupFileList() {
-        mRecyclerViewList.hasFixedSize()
-        mRecyclerViewList.layoutManager = LinearLayoutManager(context)
-        mRecyclerViewList.addItemDecoration(
-            DividerItemDecoration(
-                context, (mRecyclerViewList.layoutManager as LinearLayoutManager).orientation
-            )
-        )
-        mRecyclerViewList.adapter = FileListItemAdapter(arrayListOf()) { onItemClick(it) }
+    private fun setupFileList() = mRecyclerViewList?.run {
+        val linearLayout = LinearLayoutManager(context)
+        hasFixedSize()
+        layoutManager = linearLayout
+        adapter = FileListItemAdapter(arrayListOf()) { onItemClick(it) }
+        addItemDecoration(DividerItemDecoration(context, linearLayout.orientation))
     }
 
     override fun refreshItems(items: List<FileItem>) {
