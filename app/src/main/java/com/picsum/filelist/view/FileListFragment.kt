@@ -48,7 +48,7 @@ class FileListFragment : Fragment(), FileListContract.View {
         val linearLayout = LinearLayoutManager(context)
         hasFixedSize()
         layoutManager = linearLayout
-        adapter = FileListItemAdapter(arrayListOf()) { onItemClick(it) }
+        adapter = FileListItemAdapter(arrayListOf(), this@FileListFragment::onItemClick)
         addItemDecoration(DividerItemDecoration(context, linearLayout.orientation))
     }
 
