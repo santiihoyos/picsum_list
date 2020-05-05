@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.picsum.filelist.view.FileListFragment
 
-/**
- * Cambio en master
- */
 class MainActivity : AppCompatActivity() {
 
     /**
