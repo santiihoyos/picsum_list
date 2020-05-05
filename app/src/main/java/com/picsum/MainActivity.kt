@@ -14,10 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         showFileList()
     }
-
-    /**
-     * Change on Rama1
-     */
+    
     private fun showFileList() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.mainActivity_fragment_container, FileListFragment())
