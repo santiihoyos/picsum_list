@@ -10,7 +10,7 @@ import com.picsum.filelist.view.FileListFragment
 class MainActivity : AppCompatActivity() {
 
     /**
-     * Second change in miRama
+     * Second change in miRama2
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
