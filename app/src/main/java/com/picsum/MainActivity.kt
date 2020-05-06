@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * First change in miRama
+     * First change in miRama2
      */
     private fun showFileList() {
         supportFragmentManager.beginTransaction()
